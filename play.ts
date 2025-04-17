@@ -1,5 +1,4 @@
 import * as z from "zod";
-
 z;
 const A = z.interface({
   name: z.string(),
