@@ -1,23 +1,16 @@
 import * as z from "zod";
-z;
-const A = z.interface({
-  name: z.string(),
-  get b() {
-    return B;
-  },
-});
-// .readonly();
-// .meta({ id: "A" });
+z.config(z.locales.en());
 
-const B = z
-  .interface({
-    name: z.string(),
-    get a() {
-      return A;
-    },
-  })
-  .readonly();
-// .meta({ id: "B" });
-
-// const result = z.toJSONSchema(A);
-// console.dir(result, { depth: 10 });
+/** Standard Form:
+ *
+ * ```
+ * const schema = z.interface({ a: z.string(), "b?": z.string() });
+ *
+ * const data = { a: "Hello" };
+ * const result = schema.safeParse(data);
+ * console.dir(result, {depth: null});
+ * ```
+ */
+const a = z.json();
+type a = z.output<typeof a>;
+// z.parse(a, "hello");
